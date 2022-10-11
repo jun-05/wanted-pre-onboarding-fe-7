@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import TodoList from "../components/todo/TodoList";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import * as todoAPI from "../api/todo";
 
 const Todo = () => {
   const navigate = useNavigate();
-  const { authState } = useAuthState();
+  const { authState } = useAuth();
 
   useEffect(() => {
     if (!authState) navigate("/");

@@ -1,8 +1,8 @@
 import React from "react";
-import { useAuthState } from "../../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 
 const Nav = () => {
-  const { authState, signOut } = useAuthState();
+  const { authState, signOut } = useAuth();
 
   return (
     <div className="absolute w-screen h-14 bg-slate-700 border-b-2 border-b-slate-400 ">

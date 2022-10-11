@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;
 }
 
-export function useAuthState() {
+export function useAuth() {
   const context = useContext(AuthContext);
   return context;
 }

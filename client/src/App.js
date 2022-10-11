@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useAuthState } from "./context/AuthContext";
+import { useAuth } from "./context/AuthContext";
 import MainPage from "./pages/MainPage";
 import TodoPage from "./pages/TodoPage";
 
 function App() {
-  const { tempLogin } = useAuthState();
+  const { tempLogin } = useAuth();
   useEffect(() => {
     if (localStorage.getItem("token")) {
       tempLogin();
