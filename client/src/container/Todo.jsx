@@ -13,12 +13,7 @@ const Todo = () => {
     if (!authState) navigate("/");
   }, [authState, navigate]);
 
-  return (
-    <BaseBody>
-      <Nav />
-      <TodoList />
-    </BaseBody>
-  );
+  return <TodoList />;
 };
 
 export default Todo;
