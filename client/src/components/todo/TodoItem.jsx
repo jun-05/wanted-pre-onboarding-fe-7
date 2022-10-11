@@ -15,6 +15,7 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
 
   const ChangeIsUpdate = () => {
     setIsUpdate((prev) => !prev);
+    setTodo(item.todo);
   };
   const onChangeTodo = (e) => {
     setTodo(e.target.value);
@@ -92,6 +93,9 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
             className="w-3/4 h-8  rounded-md pl-4"
             value={todo}
             onChange={onChangeTodo}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") onUpdateTodo();
+            }}
           ></input>
           <div className="flex h-full">
             <div className="mr-4 h-8 w-8 border-2 border-gray-600 rounded-full hover:cursor-pointer">

@@ -50,6 +50,9 @@ const TodoList = ({ todos, createTodo, updateTodo, deleteTodo }) => {
                   className="w-3/4 h-10  rounded-md pl-4"
                   value={todo}
                   onChange={onChangeTodo}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") onCreateTodo();
+                  }}
                 ></input>
                 <button
                   className="bg-cyan-300 rounded-md w-1/5 h-10 text-white"
