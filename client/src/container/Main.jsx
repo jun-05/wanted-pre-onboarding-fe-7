@@ -11,7 +11,7 @@ const Main = () => {
     if (authState) navigate("/todo");
   }, [authState, navigate]);
 
-  return <SignIn onSignUp={signUp} onSignIn={signIn} />;
+  return <SignIn signUp={signUp} signIn={signIn} />;
 };
 
 export default Main;

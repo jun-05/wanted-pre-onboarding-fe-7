@@ -1,42 +1,32 @@
 import React, { useState } from "react";
-import { useCallback } from "react";
 import { useEffect } from "react";
 
 import InputBox from "./InputBox";
+import { authInputValidate } from "./../../utils/inputValidation";
 
-const SignIn = ({ onSignIn, onSignUp }) => {
+const SignIn = ({ signIn, signUp }) => {
   const [user, setUser] = useState({ email: "", password: "" });
   const [infoValidation, setInfoValidation] = useState(false);
-
-  const validateInfo = useCallback(() => {
-    const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
-    const passwordRegex = new RegExp(".{8,15}");
-
-    const emailVal = emailRegex.test(user.email);
-    const passwordVal = passwordRegex.test(user.password);
-
-    return emailVal && passwordVal;
-  }, [user]);
 
   const onInfoChange = (e) => {
     setUser({ ...user, [e.target.type]: e.target.value });
   };
 
   useEffect(() => {
-    const validation = validateInfo();
+    const validation = authInputValidate(user.email, user.password);
     setInfoValidation(validation);
-  }, [validateInfo]);
+  }, [user.email, user.password]);
 
-  const onClickSignIn = () => {
-    onSignIn(user);
+  const onSignIn = () => {
+    signIn(user);
   };
-  const onClickSignUp = () => {
-    onSignUp(user);
+  const onSignUp = () => {
+    signUp(user);
   };
 
   return (
-    <div className="flex justify-center items-center pt-14 w-full h-full ">
-      <div className="w-[720px] h-full bg-slate-500 flex justify-center items-center">
+    <div className="flex justify-center items-center w-full h-full">
+      <div className="flex justify-center items-center w-[720px] h-full bg-slate-500 min-h-screen">
         <div className="flex justify-center items-center flex-col">
           <div className="text-3xl font-bold">Sign In</div>
           <div className="mt-10">
@@ -53,7 +43,7 @@ const SignIn = ({ onSignIn, onSignUp }) => {
             <button
               className="w-full bg-slate-100 rounded-md border-2 hover:border-black hover:border-collapse disabled:cursor-not-allowed disabled:text-red-500"
               disabled={!infoValidation}
-              onClick={onClickSignIn}
+              onClick={onSignIn}
             >
               로그인
             </button>
@@ -61,7 +51,7 @@ const SignIn = ({ onSignIn, onSignUp }) => {
             <button
               className="w-full bg-slate-100 rounded-md border-2 hover:border-black hover:border-collapse disabled:cursor-not-allowed disabled:text-red-500"
               disabled={!infoValidation}
-              onClick={onClickSignUp}
+              onClick={onSignUp}
             >
               회원가입
             </button>

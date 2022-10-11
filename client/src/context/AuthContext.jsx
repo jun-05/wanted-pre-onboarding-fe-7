@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signIn, signUp } from "../api/auth";
+import * as authAPI from "../api/auth";
 import { client } from "../api/client";
 
 const setToken = (jwt) => {
@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   const state = {
     authState,
     signIn: async (user) => {
-      const res = await signIn(user);
+      const res = await authAPI.signIn(user);
       if (res.status === 200) {
         const jwt = res.data.access_token;
         setToken(jwt);
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
       }
     },
     signUp: async (user) => {
-      const res = await signUp(user);
+      const res = await authAPI.signUp(user);
       if (res.status === 201) {
         const jwt = res.data.access_token;
         setToken(jwt);
@@ -38,6 +38,11 @@ export function AuthProvider({ children }) {
       localStorage.setItem("token", "");
       client.defaults.headers.common["Authorization"] = "";
       setAuthState(false);
+    },
+    tempLogin: () => {
+      setAuthState(true);
+      const jwt = localStorage.getItem("token");
+      setToken(jwt);
     },
   };
   return <AuthContext.Provider value={state}>{children}</AuthContext.Provider>;
