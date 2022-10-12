@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { todoInputValidate } from "../../utils/inputValidation";
+import { validateTodoInput } from "../../utils/inputValidation";
 import TodoItem from "./TodoItem";
 
 const TodoList = ({ todos, createTodo, updateTodo, deleteTodo }) => {
@@ -10,7 +10,7 @@ const TodoList = ({ todos, createTodo, updateTodo, deleteTodo }) => {
   };
 
   const onCreateTodo = () => {
-    const todoVal = todoInputValidate(todo);
+    const todoVal = validateTodoInput(todo);
     if (!todoVal) {
       alert("3글자 이상 입력해주세요.");
       return;

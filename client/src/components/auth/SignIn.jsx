@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 
 import InputBox from "./InputBox";
-import { authInputValidate } from "./../../utils/inputValidation";
+import { validateAuthInput } from "./../../utils/inputValidation";
 
 const SignIn = ({ signIn, signUp }) => {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -13,7 +13,7 @@ const SignIn = ({ signIn, signUp }) => {
   };
 
   useEffect(() => {
-    const validation = authInputValidate(user.email, user.password);
+    const validation = validateAuthInput(user.email, user.password);
     setInfoValidation(validation);
   }, [user.email, user.password]);
 

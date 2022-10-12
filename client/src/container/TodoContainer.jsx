@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import * as todoAPI from "../api/todo";
 
-const Todo = () => {
+const TodoContainer = () => {
   const navigate = useNavigate();
   const { authState } = useAuth();
 
@@ -49,6 +49,8 @@ const Todo = () => {
     }
   };
 
+  if (!authState) return;
+
   return (
     <TodoList
       todos={todos}
@@ -59,4 +61,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default TodoContainer;

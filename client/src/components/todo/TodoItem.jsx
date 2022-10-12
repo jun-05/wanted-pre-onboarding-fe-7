@@ -3,7 +3,7 @@ import { BsCheckLg, BsFillPencilFill } from "react-icons/bs";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosCreate } from "react-icons/io";
-import { todoInputValidate } from "../../utils/inputValidation";
+import { validateTodoInput } from "../../utils/inputValidation";
 
 const TodoItem = ({ item, updateTodo, deleteTodo }) => {
   const [isUpdate, setIsUpdate] = useState(false);
@@ -13,7 +13,7 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
     setTodo(item.todo);
   }, [item.todo]);
 
-  const ChangeIsUpdate = () => {
+  const onChangeIsUpdate = () => {
     setIsUpdate((prev) => !prev);
     setTodo(item.todo);
   };
@@ -29,13 +29,13 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
     updateTodo(item, { type: "isCompleted", data: !item.isCompleted });
   };
   const onUpdateTodo = () => {
-    const todoVal = todoInputValidate(todo);
+    const todoVal = validateTodoInput(todo);
     if (!todoVal) {
       alert("3글자 이상 입력해주세요.");
       return;
     }
     updateTodo(item, { type: "todo", data: todo });
-    ChangeIsUpdate();
+    onChangeIsUpdate();
   };
 
   return (
@@ -70,7 +70,7 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
             <div className="h-8 w-8 border-2 border-gray-600 rounded-full hover:cursor-pointer">
               <div
                 className="w-full h-full flex justify-center items-center text-gray-600 text-lg"
-                onClick={ChangeIsUpdate}
+                onClick={onChangeIsUpdate}
               >
                 <IoIosCreate />
               </div>
@@ -101,7 +101,7 @@ const TodoItem = ({ item, updateTodo, deleteTodo }) => {
             <div className="mr-4 h-8 w-8 border-2 border-gray-600 rounded-full hover:cursor-pointer">
               <div
                 className="w-full h-full flex justify-center items-center text-gray-600 text-[32px]"
-                onClick={ChangeIsUpdate}
+                onClick={onChangeIsUpdate}
               >
                 <AiOutlineClose />
               </div>

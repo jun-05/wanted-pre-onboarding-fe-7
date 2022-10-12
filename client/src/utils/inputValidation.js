@@ -1,4 +1,4 @@
-export const authInputValidate = (email, password) => {
+export const validateAuthInput = (email, password) => {
   const emailRegex = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
   const passwordRegex = new RegExp(".{8,15}");
 
@@ -8,6 +8,6 @@ export const authInputValidate = (email, password) => {
   return emailVal && passwordVal;
 };
 
-export const todoInputValidate = (todo) => {
+export const validateTodoInput = (todo) => {
   return todo.length >= 3;
 };

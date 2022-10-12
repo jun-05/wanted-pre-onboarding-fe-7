@@ -1,13 +1,13 @@
 import React from "react";
 import BaseBody from "../components/common/BaseBody";
 import Nav from "../components/common/Nav";
-import Todo from "../container/Todo";
+import TodoContainer from "./../container/TodoContainer";
 
 const TodoPage = () => {
   return (
     <BaseBody>
       <Nav />
-      <Todo />
+      <TodoContainer />
     </BaseBody>
   );
 };

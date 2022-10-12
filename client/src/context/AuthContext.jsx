@@ -38,6 +38,7 @@ export function AuthProvider({ children }) {
       localStorage.setItem("token", "");
       client.defaults.headers.common["Authorization"] = "";
       setAuthState(false);
+      navigate("/");
     },
     tempLogin: () => {
       setAuthState(true);
