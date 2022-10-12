@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="wanted-pre-onboarding-fe-7">
       <AuthProvider>
         <App />
       </AuthProvider>

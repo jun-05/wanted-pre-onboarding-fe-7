@@ -9,5 +9,5 @@ export const validateAuthInput = (email, password) => {
 };
 
 export const validateTodoInput = (todo) => {
-  return todo.length >= 3;
+  return todo.replace(/ /g, "").length >= 3;
 };
